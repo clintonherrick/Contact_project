@@ -1,5 +1,7 @@
 class Contact
 
+  @@contacts = []
+
 
   define_method(:initialize) do |first_name, last_name, job_title, company|
     @first_name = first_name
@@ -22,6 +24,18 @@ class Contact
 
   define_method(:company) do
     @company
+  end
+
+  define_singleton_method(:all) do
+    @@contacts
+  end
+
+  define_method(:save) do
+    @@contacts.push(self)
+  end
+
+  define_singleton_method(:clear) do
+    @@contacts = []
   end
 
 end
