@@ -13,7 +13,7 @@ get('/contacts/new') do
 end
 
 get('/contact_list') do
-  @all_contacts = Contact.all()
+  @@all_contacts = Contact.all()
   erb(:all_contact)
 end
 
@@ -23,6 +23,6 @@ post('/contacts/new') do
   job_title = params.fetch('job_title')
   company = params.fetch('company')
   Contact.new(first_name, last_name, job_title, company).save()
-  @all_contacts = Contact.all()
+  @@all_contacts = Contact.all()
   erb(:success)
 end

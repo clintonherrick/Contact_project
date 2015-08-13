@@ -1,6 +1,6 @@
 <h1>Contacts</h1>
 <ul>
-  <% @all_contacts.each() do |contact| %>
-    <li><a href="/all_contacts/<%= contact.id() %>"><%= contact.info() %></a></li>
+  <% @@all_contacts.each() do |contact| %>
+    <li><a href="/all_contacts/<%= contact.id() %>"><%= contact.first_name() %> <%= contact.last_name() %>, <%= contact.job_title() %> - <%= contact.company() %></a></li>
   <% end %>
 </ul>
