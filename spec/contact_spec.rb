@@ -58,4 +58,23 @@ describe(Contact) do
     end
   end
 
+  describe("#id") do
+    it("returns the id of the contact") do
+      test_contact = Contact.new("Joe", "Shmoe", "Garbage Man", "Shmoe's Garbage")
+      test_contact.save()
+      expect(test_contact.id()).to(eq(1))
+    end
+  end
+
+  describe(".find") do
+    it("returns a contact by their id number") do
+      test_contact = Contact.new("Joe", "Shmoe", "Garbage Man", "Shmoe's Garbage")
+      test_contact.save()
+      test_contact2 = Contact.new("Don", "John", "Plumber", "John's Johns")
+      test_contact2.save()
+      expect(Contact.find(test_contact.id())).to(eq(test_contact))
+    end
+  end
+
+
 end

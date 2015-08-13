@@ -1,6 +1,6 @@
 class Contact
 
-  @@contacts = []
+  @@all_contacts = []
 
 
   define_method(:initialize) do |first_name, last_name, job_title, company|
@@ -8,6 +8,7 @@ class Contact
     @last_name = last_name
     @job_title = job_title
     @company = company
+    @id = @@all_contacts.length().+(1)
   end
 
   define_method(:first_name) do
@@ -27,15 +28,29 @@ class Contact
   end
 
   define_singleton_method(:all) do
-    @@contacts
+    @@all_contacts
   end
 
   define_method(:save) do
-    @@contacts.push(self)
+    @@all_contacts.push(self)
   end
 
   define_singleton_method(:clear) do
-    @@contacts = []
+    @@all_contacts = []
+  end
+
+  define_method(:id) do
+    @id
+  end
+
+  define_singleton_method(:find) do |id|
+    found_contact = nil
+    @@all_contacts.each() do |contact|
+      if contact.id().eql?(id.to_i())
+        found_contact = contact
+      end
+    end
+    found_contact
   end
 
 end
