@@ -9,6 +9,7 @@ class Contact
     @job_title = job_title
     @company = company
     @id = @@all_contacts.length().+(1)
+    @info = []
   end
 
   define_method(:first_name) do
@@ -41,6 +42,18 @@ class Contact
 
   define_method(:id) do
     @id
+  end
+
+  define_method(:info) do
+    @info
+  end
+
+  define_method(:add_phone) do |phone|
+    @info.push(phone)
+  end
+
+  define_method(:add_mailing_address) do |mailing_address|
+    @info.push(mailing_address)
   end
 
   define_singleton_method(:find) do |id|

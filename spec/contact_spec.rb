@@ -1,5 +1,7 @@
 require('rspec')
 require('contact')
+require('phone')
+require('mailing_address')
 
 
 describe(Contact) do
@@ -76,5 +78,22 @@ describe(Contact) do
     end
   end
 
+  describe('#add_phone') do
+    it("adds a new phone number to a contact") do
+      test_contact = Contact.new("Joe", "Shmoe", "Garbage Man", "Shmoe's Garbage")
+      test_phone = Phone.new(503-555-5555)
+      test_contact.add_phone(test_phone)
+      expect(test_contact.info()).to(eq([test_phone]))
+    end
+  end
+
+  describe('#add_mailing_address') do
+    it("adds a new mailing address to contact") do
+      test_contact = Contact.new("Joe", "Shmoe", "Garbage Man", "Shmoe's Garbage")
+      test_mailing_address = Mailing_Address.new("123 Real Street", "Portland", "Oregon", 97201)
+      test_contact.add_mailing_address(test_mailing_address)
+      expect(test_contact.info()).to(eq([test_mailing_address]))
+    end
+  end
 
 end
